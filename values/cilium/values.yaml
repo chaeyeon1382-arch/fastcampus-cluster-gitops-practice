@@ -15,3 +15,10 @@ readinessProbe:
 startupProbe:
   periodSeconds: 10
   failureThreshold: 60
+operator:
+  livenessProbe:
+    periodSeconds: 60
+    failureThreshold: 30
+  readinessProbe:
+    periodSeconds: 60
+    failureThreshold: 30

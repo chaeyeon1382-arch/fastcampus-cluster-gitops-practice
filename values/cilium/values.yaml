@@ -6,6 +6,12 @@ hubble:
 ipam:
   mode: kubernetes
 mtu: 1340
-livenessProbeTimeout: 30
-readinessProbeTimeout: 30
-startupProbeTimeout: 30
+livenessProbe:
+  periodSeconds: 60
+  failureThreshold: 30
+readinessProbe:
+  periodSeconds: 60
+  failureThreshold: 30
+startupProbe:
+  periodSeconds: 10
+  failureThreshold: 60

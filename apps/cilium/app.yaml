@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argo
+spec:
+  project: default
+  destination:  
+    name: ''
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  sources:
+  - path: ''
+    repoURL: https://helm.cilium.io/
+    targetRevision: 1.16.5
+    chart: cilium
+    helm:
+      valueFiles:
+      - $values/values/cilium/values.yaml
+  - ref: values
+    repoURL: https://github.com/chaeyeon1382-arch/fastcampus-cluster-gitops-practice.git
+    targetRevision: HEAD
+  ignoreDifferences:
+  - group: apps
+    kind: DaemonSet
+    name: cilium
+    namespace: kube-system
+    jsonPointers:
+    - /spec/template/spec/containers/0/volumeMounts
+  - group: apps
+    kind: DaemonSet
+    name: cilium-envoy
+    namespace: kube-system
+    jsonPointers:
+    - /spec/template/spec/containers/0/volumeMounts
+  - kind: Secret
+    name: cilium-ca
+    namespace: kube-system
+    jsonPointers:
+    - /data
+  - kind: Secret
+    name: hubble-relay-client-certs
+    namespace: kube-system
+    jsonPointers:
+    - /data
+  - kind: Secret
+    name: hubble-server-certs
+    namespace: kube-system
+    jsonPointers:
+    - /data

@@ -21,5 +21,5 @@
 Kubernetes, Cilium, Argo CD, WireGuard, Terraform, AWS, Oracle Cloud Infrastructure, IPsec VPN
 
 ## 출처
-이 프로젝트는 **패스트캠퍼스 [실전 DevOps의 모든 것]** 강의의 실습 프로젝트를 기반으로 진행했습니다.
+이 프로젝트는 **패스트캠퍼스 [실전 DevOps의 모든 것: 리눅스부터 GitOps까지]** 강의의 실습 프로젝트를 기반으로 진행했습니다.
 기본 구성은 강의 자료를 따르되, 직접 인프라를 구축하고 발생한 이슈(리소스 제약, IAM 권한, VPN 설정 오류 등)를 트러블슈팅하며 완성했습니다.
